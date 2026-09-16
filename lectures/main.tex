@@ -1,0 +1,283 @@
+% !TeX program = xelatex
+% Classic/plain Beamer deck (no custom theme, no navigation headers/footers,
+% no footnotes) — content rebuilt from the original "Intro to DeFi" slides.
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[english, russian]{babel}
+\usepackage{float}
+\usetheme{Frankfurt}
+\hypersetup{
+  colorlinks=true,  % красит текст вместо рамки — так безопаснее для PDF-читалок
+  linkcolor=.,       % "." = не менять цвет, взять текущий цвет текста
+  urlcolor=red,
+  citecolor=.
+}
+
+% ---- classic look: no theme decorations at all ----
+\usetheme{Frankfurt}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+% \setbeamertemplate{headline}{}
+\setbeamertemplate{caption}[numbered]
+% \beamertemplatenavigationsymbolsempty
+
+% ---- fonts / Cyrillic (compile with XeLaTeX or LuaLaTeX) ----
+\usepackage{fontspec}
+\setmainfont{Noto Sans}
+\setsansfont{Noto Sans}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% subtle, monochrome-blue accent consistent with the redrawn diagrams
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{accentlight}{HTML}{EAF0F6}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% TODO: replace with real diagrams — dashed box stands in for a missing figure
+\newcommand{\figplaceholder}[3]{%
+  \begin{tikzpicture}
+    \node[draw=accent, thick, dash pattern=on 4pt off 3pt, fill=accentlight,
+          minimum width=#1, minimum height=#2, align=center,
+          text=accent, font=\bfseries\small, inner sep=8pt] {#3};
+  \end{tikzpicture}%
+}
+
+\graphicspath{{figures/}}
+
+\title{Введение в DeFi}
+\author{Даниил Ленков}
+\subtitle{Финансы без посредников --- \textit{или почти без них}}
+\date{Сентябрь 2026}
+
+\begin{document}
+
+% ---------------------------------------------------------------- title ---
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ------------------------------------------------------------ contents ---
+\begin{frame}{Содержание}
+  \tableofcontents
+\end{frame}
+
+% ======================================================================
+\section{Зачем нужен DeFi}
+% ======================================================================
+
+\subsection{Проблемы, которые решает DeFi}
+\begin{frame}{Некоторые проблемы, которые решает DeFi}
+  \begin{itemize}
+    \item Наличие посредников: банк, брокер, клиринговый центр и пр., и у каждого своя комиссия
+    \item Часы работы и расчёты: биржи закрыты по ночам и выходным, расчёты в T+1~/~T+2
+    \item Доступ: не у каждого есть банковский счёт или брокерский доступ
+    \item Прозрачность: баланс и платёжеспособность контрагента не видны напрямую
+  \end{itemize}
+  \vfill
+  \begin{block}{}
+    "Decentralized Finance (DeFi) is a new financial paradigm that leverages distributed ledger technologies to offer services such as lending, investing, or exchanging cryptoassets without relying on a traditional centralized intermediary" \footnotemark
+  \end{block}
+ \footnotetext{BIS Working Papers No 1066 The Technology of Decentralized Finance (DeFi)}
+\end{frame}
+
+\begin{frame}{Карта DeFi протоколов}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{DeFi-Ecosystem-Map.png}
+    \caption{Экосистема DeFi}
+    \label{fig:placeholder}
+\end{figure}
+\end{frame}
+
+\subsection{DeFi vs TradFi}
+\begin{frame}{DeFi vs TradFi}
+  \setcounter{footnote}{0}
+  \small
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\textwidth}{@{}p{3cm}XX@{}}
+    \toprule
+    \textbf{Параметр} & \textbf{TradFi} & \textbf{DeFi} \\
+    \midrule
+    Доступ & Через посредника: KYC, счёт & Permissionless: кошелёк и интернет \\
+    Расчёты & T+1 / T+2, часы работы биржи & Почти мгновенно, 24/7\footnotemark \\
+    Кастодиан (депозитарий) & Банк / брокер держит актив & Self-custody или смарт-контракт \\
+    Прозрачность & Баланс контрагента скрыт & Все транзакции видны ончейн\footnotemark \\
+    Правила & Меняет оператор / регулятор & Заданы кодом --- пока не изменены governance\footnotemark \\
+    \bottomrule
+  \end{tabularx}
+  \footnotetext[1]{Актуально прежде всего для трансграничных расчётов, а не для операций внутри одного банка или СБП}
+  \footnotetext[2]{За исключением анонимизированных протоколов вроде \href{https://z.cash/}{ZCash}, \href{https://www.getmonero.org/}{Monero}}
+  \footnotetext[3]{Governance-голосование может изменить параметры протокола}
+\end{frame}
+
+\begin{frame}{DeFi vs TradFi}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\linewidth]{cedefi.png}
+    \caption{Это DeFi или нет?}
+    \label{fig:cedefi}
+\end{figure}
+\footnotetext[5]{Из курса \hyperlink{Decentralized Finance}{https://rdi.berkeley.edu/berkeley-defi/f25}Fall 2025 University of Berkely}
+\end{frame}
+
+% ======================================================================
+\section{Как устроен DeFi}
+% ======================================================================
+
+\subsection{Технологический фундамент}
+\begin{frame}{Технологический фундамент}
+  \begin{itemize}
+    \item \textbf{Блокчейн} --- публичный реестр с детерминированным исполнением
+    \begin{itemize}
+      \item Общее состояние, которое все участники обновляют по одним правилам
+    \end{itemize}
+    \vspace{-1mm}
+    \centerline{\includegraphics[width=0.58\textwidth]{blockchain.png}}
+    \vspace{-2mm}
+    \item \textbf{Смарт-контракт} --- код, который исполняется без дискреции оператора
+    \begin{itemize}
+      \item «Если X, то Y» --- прописано заранее и (обычно) неизменно
+    \end{itemize}
+    \item \textbf{Стейблкоин} --- мост между фиатным и ончейн миром
+    \begin{itemize}
+      \item Fiat-backed, crypto-backed, algorithmic --- отдельная большая тема \footnotemark
+    \end{itemize}
+  \end{itemize}
+
+\footnotetext{Чуть подробнее здесь: Стеблкоины --- \textit{о дивный мир стабильности}}
+\end{frame}
+
+\subsection{Кошелёк и подпись транзакций}
+\begin{frame}{Кошелёк --- точка входа в DeFi}
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.72\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{wallet-flow.png}
+    \end{column}
+    \begin{column}{0.24\textwidth}
+      \centering
+      \figplaceholder{0.9\linewidth}{0.9\linewidth}{QR\\(placeholder)}
+    \end{column}
+  \end{columns}
+  \vspace{1mm}
+  \footnotesize
+  \begin{block}{}
+    \begin{itemize}
+      \item Приватный ключ --- большое \textbf{случайное число}, единственное доказательство владения аккаунтом;
+      \item Адрес --- производная от него, её можно свободно показывать.
+      \item Подпись --- доказательство того, что именно вы отправили эту транзакция без раскрытия приватного ключа.
+    \end{itemize}
+Кошелёк (MetaMask, Phantom и т.\,п.) --- просто интерфейс: хранит ключ и подписывает транзакции за вас.
+\end{block}{}
+\end{frame}
+
+\subsection{Основные примитивы (money legos)}
+\begin{frame}{Основные примитивы (money legos)}
+  \small
+  \renewcommand{\arraystretch}{1.32}
+  \vfill
+  \begin{tabularx}{\textwidth}{@{}*{3}{>{\raggedright\arraybackslash}p{2.7cm}}>{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \textbf{Примитив} & \textbf{Примеры} & \textbf{TradFi-аналог} & \textbf{Что решает} \\
+    \midrule
+    DEX / AMM & Uniswap, Curve & Маркетмейкинг & Обмен активов без ордербука и брокера \\
+    Lending / Borrowing & Aave, Compound & Money market, репо & Кредит под залог без банка и кредитной истории \\
+    Деривативы / перпетуалы & dYdX, GMX & Фьючерсы, свопы & Синтетическая экспозиция без центрального клиринга \\
+    Staking / Liquid staking & Lido, Rocket Pool & Срочный депозит & Доход за участие в безопасности сети \\
+    Стейблкоины & USDC, DAI & Денежный рынок & Единица счёта и расчётов ончейн \\
+    \bottomrule
+  \end{tabularx}
+  \vfill
+\end{frame}
+
+\subsection{DEX и AMM: как происходит своп}
+\begin{frame}{DEX и AMM: как происходит своп}
+  \centering
+  \figplaceholder{0.75\linewidth}{4.5cm}{AMM swap\\(placeholder)}
+  \vspace{3mm}
+  \begin{center}
+  \parbox{0.85\linewidth}{\footnotesize\centering
+  Цена определяется составом пула, а не ордербуком --- отсюда проскальзывание (slippage) и impermanent loss для LP.}
+  \end{center}
+\end{frame}
+
+\subsection{Lending: обеспечение и ликвидация}
+\begin{frame}{Lending: обеспечение и ликвидация}
+  \centering
+  \figplaceholder{0.8\linewidth}{4.2cm}{Lending \& liquidation\\(placeholder)}
+  \vspace{3mm}
+  \begin{center}
+  \parbox{0.92\linewidth}{\footnotesize\centering
+  Обеспечение почти всегда избыточно (over-collateralized) --- у протокола нет кредитной истории заёмщика, поэтому единственная защита от дефолта --- запас в залоге.
+  Как только стоимость залога падает ниже порога (liquidation ratio), ликвидаторы выкупают залог со скидкой и гасят долг --- часто с каскадным эффектом при резком падении рынка.}
+  \end{center}
+\end{frame}
+
+\subsection{Инфраструктура: оракулы, мосты, L1/L2}
+\begin{frame}{Инфраструктура: то, что всё скрепляет}
+  \begin{itemize}
+    \item
+
+
+\textbf{Оракулы} (Chainlink и др.) --- поставляют цену из внешнего мира в смарт-контракт
+    \begin{itemize}
+      \item Если оракул сломан или манипулирован --- рушится вся логика ликвидаций
+    \end{itemize}
+    \item \textbf{Мосты} (bridges) --- переносят активы и сообщения между сетями
+    \begin{itemize}
+      \item Одна из самых частых точек взлома в DeFi
+    \end{itemize}
+    \item \textbf{Layer 1 vs Layer 2} --- базовый блокчейн и надстройки над ним для масштабирования
+    \begin{itemize}
+      \item Trade-off: децентрализация против скорости и стоимости транзакций
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% ======================================================================
+\section{Риски и что дальше}
+% ======================================================================
+
+\subsection{Карта рисков}
+\begin{frame}{Карта рисков}
+  \centering
+  \figplaceholder{0.92\linewidth}{5cm}{Risk matrix\\(placeholder)}
+\end{frame}
+
+\subsection{Куда двигаться дальше}
+\begin{frame}{Куда двигаться дальше}
+  \begin{itemize}
+    \item Стейблкоины --- таксономия, трилемма, механизмы стабилизации (отдельная лекция)
+    \item AMM и маркетмейкинг --- математика $x\cdot y=k$, концентрированная ликвидность
+    \item Lending-протоколы --- модели процентных ставок, оракулы, механика ликвидаций
+    \item Токеномика и governance --- DAO, распределение токенов, атаки на голосование
+    \item Регулирование --- MiCA, GENIUS Act и российский контекст
+  \end{itemize}
+\end{frame}
+
+% ------------------------------------------------------------- sources ---
+\begin{frame}{Источники}
+  \small
+  \begin{enumerate}
+    \item Uniswap v2 Core --- whitepaper
+    \item Aave Protocol --- документация
+    \item Chainlink Docs --- оракулы
+    \item DeFiLlama --- данные по TVL и протоколам
+    \item BIS --- обзоры о DeFi и системных рисках
+    \item EUR-Lex --- регламент MiCA (EU)
+  \end{enumerate}
+\end{frame}
+
+\end{document}
