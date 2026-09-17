@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Как устроены L1 и L2</title>
+<style>
+  html,body{ margin:0; padding:0; background:#ffffff; font-family:Arial,"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .wrap{ max-width:1200px; margin:0 auto; padding:24px 16px; }
+  svg text{ font-family:Arial,"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<svg viewBox="0 0 1200 420" width="100%" height="auto" role="img" aria-label="Схема: L2 обрабатывает транзакции и публикует данные и доказательство в L1">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2C5A82"/>
+    </marker>
+  </defs>
+
+  <!-- Panel A: Layer 2 -->
+  <rect x="60" y="40" width="460" height="345" rx="20" fill="#F5F7FA" stroke="#8FA3B8" stroke-width="1.5" stroke-dasharray="7,6"/>
+  <text x="290" y="75" text-anchor="middle" font-size="18" font-weight="700" fill="#2C5A82">Layer 2 &middot; Rollup (например, Arbitrum)</text>
+
+  <rect x="120" y="110" width="340" height="75" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="290" y="145" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">Пользователи</text>
+  <text x="290" y="168" text-anchor="middle" font-size="13" fill="#333333">Отправляют транзакции, низкие комиссии</text>
+
+  <line x1="290" y1="185" x2="290" y2="197" stroke="#2C5A82" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="440" y="196" text-anchor="end" font-size="13" fill="#333333">порядок</text>
+
+  <rect x="120" y="200" width="340" height="75" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="290" y="235" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">Секвенсор</text>
+  <text x="290" y="258" text-anchor="middle" font-size="13" fill="#333333">Упорядочивает и исполняет</text>
+
+  <line x1="290" y1="275" x2="290" y2="287" stroke="#2C5A82" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="440" y="286" text-anchor="end" font-size="13" fill="#333333">сжатие</text>
+
+  <rect x="120" y="290" width="340" height="75" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="290" y="325" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">Батч транзакций</text>
+  <text x="290" y="348" text-anchor="middle" font-size="13" fill="#333333">Сжатые данные, готовы к публикации</text>
+
+  <!-- Panel B: Layer 1 -->
+  <rect x="680" y="40" width="460" height="345" rx="20" fill="#F5F7FA" stroke="#8FA3B8" stroke-width="1.5" stroke-dasharray="7,6"/>
+  <text x="910" y="75" text-anchor="middle" font-size="18" font-weight="700" fill="#2C5A82">Layer 1 &middot; Ethereum (безопасность)</text>
+
+  <rect x="740" y="110" width="340" height="100" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="910" y="150" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">Публикация данных</text>
+  <text x="910" y="175" text-anchor="middle" font-size="13" fill="#333333">Calldata / blobs</text>
+  <text x="910" y="197" text-anchor="middle" font-size="13" fill="#333333">+ доказательство корректности</text>
+
+  <line x1="910" y1="210" x2="910" y2="264" stroke="#2C5A82" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="740" y="265" width="340" height="100" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="910" y="305" text-anchor="middle" font-size="19" font-weight="700" fill="#111111">Финализация</text>
+  <text x="910" y="330" text-anchor="middle" font-size="13" fill="#333333">Безопасность уровня L1</text>
+  <text x="910" y="352" text-anchor="middle" font-size="13" fill="#333333">Может быть оспорено</text>
+
+  <!-- connecting arrow: L2 batch -> L1 publish -->
+  <path d="M 460 327 L 555 327 L 555 160 L 731 160" fill="none" stroke="#2C5A82" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="567" y="235" text-anchor="start" font-size="13" fill="#333333">данные батча</text>
+  <text x="567" y="251" text-anchor="start" font-size="13" fill="#333333">+ доказательство</text>
+</svg>
+</div>
+</body>
+</html>

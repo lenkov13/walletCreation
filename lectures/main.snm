@@ -1,2 +1,6 @@
 \beamer@slide {fig:placeholder}{4}
 \beamer@slide {fig:cedefi}{6}
+\beamer@slide {fig:orderbook}{10}
+\beamer@slide {fig:amm-curve}{10}
+\beamer@slide {fig:tvl-loans}{13}
+\beamer@slide {fig:risk-matrix}{17}

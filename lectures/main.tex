@@ -129,7 +129,7 @@
     \caption{Это DeFi или нет?}
     \label{fig:cedefi}
 \end{figure}
-\footnotetext[5]{Из курса \hyperlink{Decentralized Finance}{https://rdi.berkeley.edu/berkeley-defi/f25}Fall 2025 University of Berkely}
+\footnotetext[5]{Из курса \href{https://rdi.berkeley.edu/berkeley-defi/f25}{Decentralized Finance}Fall 2025 University of Berkely}
 \end{frame}
 
 % ======================================================================
@@ -143,10 +143,10 @@
     \begin{itemize}
       \item Общее состояние, которое все участники обновляют по одним правилам
     \end{itemize}
-    \vspace{-1mm}
+    % \vspace{-1mm}
     \centerline{\includegraphics[width=0.58\textwidth]{blockchain.png}}
     \vspace{-2mm}
-    \item \textbf{Смарт-контракт} --- код, который исполняется без дискреции оператора
+    \item \textbf{Смарт-контракт} --- код, который исполняется по заданным правилам. "вендинговый автомат"
     \begin{itemize}
       \item «Если X, то Y» --- прописано заранее и (обычно) неизменно
     \end{itemize}
@@ -156,7 +156,7 @@
     \end{itemize}
   \end{itemize}
 
-\footnotetext{Чуть подробнее здесь: Стеблкоины --- \textit{о дивный мир стабильности}}
+\footnotetext{ Чуть подробнее здесь: \href{https://docs.google.com/presentation/d/1X1zsJ3o4tnskKV3l7iiAg33HFhEAG335ropp0toxnHs/edit?usp=sharing}{Stablecoins} --- о дивный новый мир \textit{стабильности}}
 \end{frame}
 
 \subsection{Кошелёк и подпись транзакций}
@@ -168,7 +168,9 @@
     \end{column}
     \begin{column}{0.24\textwidth}
       \centering
-      \figplaceholder{0.9\linewidth}{0.9\linewidth}{QR\\(placeholder)}
+      \begin{tikzpicture}
+        \node[draw=accent, thick, dash pattern=on 4pt off 3pt, inner sep=4pt] {\includegraphics[width=0.9\linewidth]{qr.png}};
+      \end{tikzpicture}
     \end{column}
   \end{columns}
   \vspace{1mm}
@@ -179,7 +181,6 @@
       \item Адрес --- производная от него, её можно свободно показывать.
       \item Подпись --- доказательство того, что именно вы отправили эту транзакция без раскрытия приватного ключа.
     \end{itemize}
-Кошелёк (MetaMask, Phantom и т.\,п.) --- просто интерфейс: хранит ключ и подписывает транзакции за вас.
 \end{block}{}
 \end{frame}
 
@@ -192,58 +193,123 @@
     \toprule
     \textbf{Примитив} & \textbf{Примеры} & \textbf{TradFi-аналог} & \textbf{Что решает} \\
     \midrule
+    Стейблкоины & USDC, DAI & Фиатные деньги & Единица расчётов ончейн \\
     DEX / AMM & Uniswap, Curve & Маркетмейкинг & Обмен активов без ордербука и брокера \\
     Lending / Borrowing & Aave, Compound & Money market, репо & Кредит под залог без банка и кредитной истории \\
-    Деривативы / перпетуалы & dYdX, GMX & Фьючерсы, свопы & Синтетическая экспозиция без центрального клиринга \\
+    Деривативы / перпетуалы & dYdX, GMX & Фьючерсы, свопы & Деривативы без центрального клиринга \\
     Staking / Liquid staking & Lido, Rocket Pool & Срочный депозит & Доход за участие в безопасности сети \\
-    Стейблкоины & USDC, DAI & Денежный рынок & Единица счёта и расчётов ончейн \\
     \bottomrule
   \end{tabularx}
   \vfill
 \end{frame}
 
 \subsection{DEX и AMM: как происходит своп}
-\begin{frame}{DEX и AMM: как происходит своп}
-  \centering
-  \figplaceholder{0.75\linewidth}{4.5cm}{AMM swap\\(placeholder)}
-  \vspace{3mm}
-  \begin{center}
-  \parbox{0.85\linewidth}{\footnotesize\centering
-  Цена определяется составом пула, а не ордербуком --- отсюда проскальзывание (slippage) и impermanent loss для LP.}
-  \end{center}
+\begin{frame}{DEX и AMM: как происходит своп (обмен токенами)}
+  \vspace{-3mm}
+  \begin{columns}[b, onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{figure}
+        \centering
+        \begin{minipage}[b][5cm][c]{\linewidth}
+          \centering
+          \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{orderbook.png}
+        \end{minipage}
+        \caption{Ордербук}
+        \label{fig:orderbook}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{figure}
+        \centering
+        \begin{minipage}[b][5cm][c]{\linewidth}
+          \centering
+          \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{the_curve.png}
+        \end{minipage}
+        \caption{AMM}
+        \label{fig:amm-curve}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
+
+\begin{frame}{DEX и AMM: как происходит своп (обмен токенами)}
+  \begin{block}{Как AMM определяет цену}
+    \footnotesize
+    \setlength{\itemsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \begin{itemize}
+      \item Ордербук: покупатели и продавцы выставляют встречные заявки (bid-ask), цена сделки --- точка их пересечения;
+      \item AMM: ликвидность лежит в общем пуле (от Liquidity Providers), цена --- функция его состава (пропорции токенов), а не заявок отдельных участников рынка;
+      \item Самый распространённый инвариант --- \textbf{constant product}: $x \cdot y = k$, где $x, y$ --- запасы двух токенов в пуле;
+      \item Своп меняет величины $x$ и $y$, но не величину $k$ --- отсюда проскальзывание (slippage) на крупных сделках и impermanent loss для LP. Функции прироста $\Delta x$ и $\Delta y$ нелинейны!
+    \end{itemize}
+  \end{block}
+\end{frame}
+
 
 \subsection{Lending: обеспечение и ликвидация}
 \begin{frame}{Lending: обеспечение и ликвидация}
+  \vspace{1mm}
   \centering
-  \figplaceholder{0.8\linewidth}{4.2cm}{Lending \& liquidation\\(placeholder)}
-  \vspace{3mm}
-  \begin{center}
-  \parbox{0.92\linewidth}{\footnotesize\centering
-  Обеспечение почти всегда избыточно (over-collateralized) --- у протокола нет кредитной истории заёмщика, поэтому единственная защита от дефолта --- запас в залоге.
-  Как только стоимость залога падает ниже порога (liquidation ratio), ликвидаторы выкупают залог со скидкой и гасят долг --- часто с каскадным эффектом при резком падении рынка.}
-  \end{center}
+  \includegraphics[width=\linewidth]{lending_diagram.png}
+  \begin{block}{Как это работает}
+    \small
+    \begin{itemize}
+      \item Обеспечение почти всегда избыточно (over-collateralized), так как это единственная защита протокола от дефолта без кредитной истории заёмщика.
+      \item Если стоимость залога падает ниже порога (liquidation ratio), ликвидаторы гасят долг и забирают залог с дисконтом --- риск каскадного эффекта при резком падении рынка.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Lending: рост рынка}
+  \centering
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.62\linewidth]{tvl_loans.png}
+    \caption{TVL и объём активных займов в lending-протоколах}
+    \label{fig:tvl-loans}
+  \end{figure}
 \end{frame}
 
 \subsection{Инфраструктура: оракулы, мосты, L1/L2}
-\begin{frame}{Инфраструктура: то, что всё скрепляет}
-  \begin{itemize}
-    \item
-
-
-\textbf{Оракулы} (Chainlink и др.) --- поставляют цену из внешнего мира в смарт-контракт
+\begin{frame}{Элементы инфраструктуры: оракулы}
+  \vspace{1mm}
+  \centering
+  \includegraphics[width=\linewidth]{oracles_diagram.png}
+  \begin{block}{Оракулы (Chainlink и др.)}
+    \small
     \begin{itemize}
-      \item Если оракул сломан или манипулирован --- рушится вся логика ликвидаций
+      \item Поставляют данные из внешнего мира (цены, курсы) в смарт-контракт.
+      \item Блокчейн --- детерминированная среда: каждый валидатор должен получить одинаковый результат, поэтому напрямую обращаться в интернет он не может --- данные там могут измениться.
     \end{itemize}
-    \item \textbf{Мосты} (bridges) --- переносят активы и сообщения между сетями
+  \end{block}
+\end{frame}
+
+\begin{frame}{Элементы инфраструктуры: мосты}
+  \vspace{1mm}
+  \centering
+  \includegraphics[width=\linewidth]{bridges_diagram.png}
+  \begin{block}{Мосты (bridges)}
+    \small
     \begin{itemize}
+      \item Нужны для переноса активов из одной сети в другую
       \item Одна из самых частых точек взлома в DeFi
     \end{itemize}
-    \item \textbf{Layer 1 vs Layer 2} --- базовый блокчейн и надстройки над ним для масштабирования
+  \end{block}
+\end{frame}
+
+\begin{frame}{Элементы инфраструктуры: L1/L2}
+  \vspace{1mm}
+  \centering
+  \includegraphics[width=\linewidth]{l2_diagram.png}
+  \begin{block}{L1 / L2}
+    \small
     \begin{itemize}
+      \item Базовый блокчейн и надстройки над ним для масштабирования
       \item Trade-off: децентрализация против скорости и стоимости транзакций
     \end{itemize}
-  \end{itemize}
+  \end{block}
 \end{frame}
 
 % ======================================================================
@@ -251,19 +317,74 @@
 % ======================================================================
 
 \subsection{Карта рисков}
-\begin{frame}{Карта рисков}
+\begin{frame}{Карта рисков DeFi}
   \centering
-  \figplaceholder{0.92\linewidth}{5cm}{Risk matrix\\(placeholder)}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.56\linewidth]{defi_risk_matrix_only.png}
+    \caption{Вероятность реализации риска (12 мес) и тяжесть последствий}
+    \label{fig:risk-matrix}
+  \end{figure}
 \end{frame}
 
-\subsection{Куда двигаться дальше}
-\begin{frame}{Куда двигаться дальше}
+\begin{frame}{Карта рисков DeFi: ключевые риски}
+  \footnotesize
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Приоритет --- действовать}
+        \begin{enumerate}
+          \setlength{\itemsep}{0pt}
+          \item Смарт-контракты: баги, эксплойты
+          \item Манипуляция оракулами
+          \item Каскады ликвидаций (плечо)
+          \item Регуляторные шоки
+          \item Рестейкинг / re-hypothecation
+        \end{enumerate}
+      \end{block}
+      \vspace{2mm}
+      \begin{block}{Контроль / автоматизация}
+        \begin{enumerate}
+          \setlength{\itemsep}{0pt}
+          \setcounter{enumi}{10}
+          \item MEV и сэндвич-атаки
+          \item RWA: юридические и кастодиальные пробелы
+        \end{enumerate}
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{План B --- ниже вероятность}
+        \begin{enumerate}
+          \setlength{\itemsep}{0pt}
+          \setcounter{enumi}{5}
+          \item Эксплойты кросс-чейн мостов
+          \item Компрометация admin-key / мультисига
+          \item Депег стейблкоинов
+          \item Каскад CeFi--DeFi
+          \item Квантовая угроза для ECDSA-подписей
+        \end{enumerate}
+      \end{block}
+      \vspace{2mm}
+      \begin{block}{Мониторинг}
+        \begin{enumerate}
+          \setlength{\itemsep}{0pt}
+          \setcounter{enumi}{12}
+          \item Недокапитализация страхового фонда
+          \item Governance-атака через флэш-займы
+          \item Централизация L2-секвенсера
+        \end{enumerate}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Регулирование в РФ}
+\begin{frame}{282-ФЗ}
+  По определению и по архитектуре на сам DeFi невозможно оказать влияние. Однако можно зарегулировать посредников и пути доступа к протоколам DeFi.
   \begin{itemize}
-    \item Стейблкоины --- таксономия, трилемма, механизмы стабилизации (отдельная лекция)
-    \item AMM и маркетмейкинг --- математика $x\cdot y=k$, концентрированная ликвидность
-    \item Lending-протоколы --- модели процентных ставок, оракулы, механика ликвидаций
-    \item Токеномика и governance --- DAO, распределение токенов, атаки на голосование
-    \item Регулирование --- MiCA, GENIUS Act и российский контекст
+    \item Лицензируются биржи, обменники, депозитарии;
+    \item Цифровая валюта признаётся имуществом;
+    \item Некастодиальные кошельки и cooling-off период в 48 часов при переводе более 100 000 руб.
+    \item Расчёты криптовалютой внутри России по-прежнему запрещены, но участникам ВЭД разрешены трансграничные расчёты и переводы криптовалюты за рубеж
   \end{itemize}
 \end{frame}
 

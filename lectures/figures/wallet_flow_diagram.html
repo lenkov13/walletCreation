@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>От приватного ключа к адресу кошелька</title>
+<style>
+  html,body{
+    margin:0;
+    padding:0;
+    background:#ffffff;
+    font-family:Arial,"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:24px 16px;
+  }
+  svg text{ font-family:Arial,"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif; }
+  svg .mono{ font-family:"Courier New",monospace; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<svg viewBox="0 0 1200 340" width="100%" height="auto" role="img" aria-label="Схема: от приватного ключа к публичному ключу и адресу кошелька">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2C5A82"/>
+    </marker>
+  </defs>
+
+  <!-- Box 1: Приватный ключ -->
+  <rect x="90" y="75" width="270" height="190" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="225" y="120" text-anchor="middle" font-size="21" font-weight="700" fill="#111111">Приватный ключ</text>
+  <text x="225" y="155" text-anchor="middle" font-size="15" fill="#333333">случайное число</text>
+  <text x="225" y="183" text-anchor="middle" font-size="15" fill="#333333">(256 бит)</text>
+  <text x="225" y="220" text-anchor="middle" font-size="15" fill="#333333" class="mono">0xA3F9...E71C</text>
+
+  <!-- Box 2: Публичный ключ -->
+  <rect x="465" y="75" width="270" height="190" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="600" y="120" text-anchor="middle" font-size="21" font-weight="700" fill="#111111">Публичный ключ</text>
+  <text x="600" y="155" text-anchor="middle" font-size="15" fill="#333333">вычисляется</text>
+  <text x="600" y="183" text-anchor="middle" font-size="15" fill="#333333">из приватного</text>
+  <text x="600" y="220" text-anchor="middle" font-size="15" fill="#333333" class="mono">0x04B1...9D3A</text>
+
+  <!-- Box 3: Адрес кошелька -->
+  <rect x="840" y="75" width="270" height="190" rx="14" fill="#E8ECF3" stroke="#2C5A82" stroke-width="2.5"/>
+  <text x="975" y="120" text-anchor="middle" font-size="21" font-weight="700" fill="#111111">Адрес кошелька</text>
+  <text x="975" y="168" text-anchor="middle" font-size="15" fill="#333333">короткий &laquo;номер счёта&raquo;</text>
+  <text x="975" y="220" text-anchor="middle" font-size="15" fill="#333333" class="mono">0x71C7...976F</text>
+
+  <!-- arrow 1 -->
+  <line x1="360" y1="170" x2="459" y2="170" stroke="#2C5A82" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="412" y="138" text-anchor="middle" font-size="13" fill="#333333">эллиптическая</text>
+  <text x="412" y="154" text-anchor="middle" font-size="13" fill="#333333">кривая (secp256k1)</text>
+
+  <!-- arrow 2 -->
+  <line x1="735" y1="170" x2="834" y2="170" stroke="#2C5A82" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="787" y="138" text-anchor="middle" font-size="13" fill="#333333">хеш-функция</text>
+  <text x="787" y="154" text-anchor="middle" font-size="13" fill="#333333">(Keccak-256)</text>
+</svg>
+</div>
+</body>
+</html>

@@ -36,29 +36,39 @@
 \headcommand {\beamer@subsectionentry {0}{2}{4}{10}{DEX и AMM: как происходит своп}}
 \headcommand {\slideentry {2}{4}{1}{10/10}{DEX и AMM: как происходит своп}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{2}{5}{11}{Lending: обеспечение и ликвидация}}
-\headcommand {\slideentry {2}{5}{1}{11/11}{Lending: обеспечение и ликвидация}{0}}
+\headcommand {\slideentry {2}{4}{2}{11/11}{DEX и AMM: как происходит своп}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{6}{12}{Инфраструктура: оракулы, мосты, L1/L2}}
-\headcommand {\slideentry {2}{6}{1}{12/12}{Инфраструктура: оракулы, мосты, L1/L2}{0}}
+\headcommand {\beamer@subsectionpages {10}{11}}
+\headcommand {\beamer@subsectionentry {0}{2}{5}{12}{Lending: обеспечение и ликвидация}}
+\headcommand {\slideentry {2}{5}{1}{12/12}{Lending: обеспечение и ликвидация}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@sectionpages {7}{12}}
-\headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\sectionentry {3}{Риски и что дальше}{13}{Риски и что дальше}{0}}
-\headcommand {\beamer@subsectionpages {13}{12}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{13}{Карта рисков}}
-\headcommand {\slideentry {3}{1}{1}{13/13}{Карта рисков}{0}}
+\headcommand {\slideentry {2}{5}{2}{13/13}{Lending: обеспечение и ликвидация}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@subsectionpages {13}{13}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{14}{Куда двигаться дальше}}
-\headcommand {\slideentry {3}{2}{1}{14/14}{Куда двигаться дальше}{0}}
+\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\beamer@subsectionentry {0}{2}{6}{14}{Инфраструктура: оракулы, мосты, L1/L2}}
+\headcommand {\slideentry {2}{6}{1}{14/14}{Инфраструктура: оракулы, мосты, L1/L2}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {3}{2}{2}{15/15}{Куда двигаться дальше}{0}}
+\headcommand {\slideentry {2}{6}{2}{15/15}{Инфраструктура: оракулы, мосты, L1/L2}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@partpages {1}{15}}
-\headcommand {\beamer@subsectionpages {14}{15}}
-\headcommand {\beamer@sectionpages {13}{15}}
-\headcommand {\beamer@documentpages {15}}
-\headcommand {\gdef \inserttotalframenumber {15}}
+\headcommand {\slideentry {2}{6}{3}{16/16}{Инфраструктура: оракулы, мосты, L1/L2}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@sectionpages {7}{16}}
+\headcommand {\beamer@subsectionpages {14}{16}}
+\headcommand {\sectionentry {3}{Риски и что дальше}{17}{Риски и что дальше}{0}}
+\headcommand {\beamer@subsectionpages {17}{16}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{17}{Карта рисков}}
+\headcommand {\slideentry {3}{1}{1}{17/17}{Карта рисков}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {3}{1}{2}{18/18}{Карта рисков}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\beamer@subsectionpages {17}{18}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{19}{Регулирование в РФ}}
+\headcommand {\slideentry {3}{2}{1}{19/19}{Регулирование в РФ}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {3}{2}{2}{20/20}{Регулирование в РФ}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\beamer@partpages {1}{20}}
+\headcommand {\beamer@subsectionpages {19}{20}}
+\headcommand {\beamer@sectionpages {17}{20}}
+\headcommand {\beamer@documentpages {20}}
+\headcommand {\gdef \inserttotalframenumber {20}}
