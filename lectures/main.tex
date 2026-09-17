@@ -40,9 +40,10 @@
 \setbeamercolor{structure}{fg=accent}
 \setbeamercolor{title}{fg=white}
 \setbeamercolor{frametitle}{fg=white}
-\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\mdseries}
 \setbeamerfont{footnote}{size=\tiny}
-\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
 \setbeamertemplate{enumerate items}[default]
 
 % TODO: replace with real diagrams — dashed box stands in for a missing figure
@@ -56,9 +57,9 @@
 
 \graphicspath{{figures/}}
 
-\title{Введение в DeFi}
+\title{DeFi}
 \author{Даниил Ленков}
-\subtitle{Финансы без посредников --- \textit{или почти без них}}
+\subtitle{О дивный новый мир \textit{(почти)} без банков}
 \date{Сентябрь 2026}
 
 \begin{document}
@@ -85,20 +86,23 @@
     \item Доступ: не у каждого есть банковский счёт или брокерский доступ
     \item Прозрачность: баланс и платёжеспособность контрагента не видны напрямую
   \end{itemize}
-  \vfill
+  % \vfill
+  \vspace{-2mm}
   \begin{block}{}
+    \small
     "Decentralized Finance (DeFi) is a new financial paradigm that leverages distributed ledger technologies to offer services such as lending, investing, or exchanging cryptoassets without relying on a traditional centralized intermediary" \footnotemark
   \end{block}
- \footnotetext{BIS Working Papers No 1066 The Technology of Decentralized Finance (DeFi)}
+ \footnotetext{BIS Working Papers No \href{https://www.bis.org/publications/working-paper-1066-technology-decentralized-finance-defi}{1066} The Technology of Decentralized Finance (DeFi)}
 \end{frame}
 
 \begin{frame}{Карта DeFi протоколов}
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{DeFi-Ecosystem-Map.png}
+    \includegraphics[width=0.65\linewidth]{DeFi-Ecosystem-Map.png}
     \caption{Экосистема DeFi}
     \label{fig:placeholder}
 \end{figure}
+\footnotetext[2]{DeFi \href{https://tokeny.com/defi-ecosystem/}{Ecosystem} from Tokeny}
 \end{frame}
 
 \subsection{DeFi vs TradFi}
@@ -117,9 +121,9 @@
     Правила & Меняет оператор / регулятор & Заданы кодом --- пока не изменены governance\footnotemark \\
     \bottomrule
   \end{tabularx}
-  \footnotetext[1]{Актуально прежде всего для трансграничных расчётов, а не для операций внутри одного банка или СБП}
-  \footnotetext[2]{За исключением анонимизированных протоколов вроде \href{https://z.cash/}{ZCash}, \href{https://www.getmonero.org/}{Monero}}
-  \footnotetext[3]{Governance-голосование может изменить параметры протокола}
+  \footnotetext[3]{Актуально прежде всего для трансграничных расчётов, а не для операций внутри одного банка или СБП}
+  \footnotetext[4]{За исключением анонимизированных протоколов вроде \href{https://z.cash/}{ZCash}, \href{https://www.getmonero.org/}{Monero}}
+  \footnotetext[5]{Governance-голосование может изменить параметры протокола}
 \end{frame}
 
 \begin{frame}{DeFi vs TradFi}
@@ -129,7 +133,7 @@
     \caption{Это DeFi или нет?}
     \label{fig:cedefi}
 \end{figure}
-\footnotetext[5]{Из курса \href{https://rdi.berkeley.edu/berkeley-defi/f25}{Decentralized Finance}Fall 2025 University of Berkely}
+\footnotetext[6]{Из курса \href{https://rdi.berkeley.edu/berkeley-defi/f25}{Decentralized Finance}Fall 2025 University of Berkely}
 \end{frame}
 
 % ======================================================================
@@ -143,30 +147,30 @@
     \begin{itemize}
       \item Общее состояние, которое все участники обновляют по одним правилам
     \end{itemize}
-    % \vspace{-1mm}
+    \vspace{-1mm}
     \centerline{\includegraphics[width=0.58\textwidth]{blockchain.png}}
     \vspace{-2mm}
-    \item \textbf{Смарт-контракт} --- код, который исполняется по заданным правилам. "вендинговый автомат"
+    \item \textbf{Смарт-контракт} --- код, который исполняется по заданным правилам. "Вендинговый автомат"
     \begin{itemize}
-      \item «Если X, то Y» --- прописано заранее и (обычно) неизменно
+      \item «Если X, то Y» --- прописано в контракте и (обычно) неизменно
     \end{itemize}
     \item \textbf{Стейблкоин} --- мост между фиатным и ончейн миром
     \begin{itemize}
-      \item Fiat-backed, crypto-backed, algorithmic --- отдельная большая тема \footnotemark
+      \item Fiat-backed, crypto-backed, algorithmic --- некоторые классы стейблкоинов \footnotemark
     \end{itemize}
   \end{itemize}
 
-\footnotetext{ Чуть подробнее здесь: \href{https://docs.google.com/presentation/d/1X1zsJ3o4tnskKV3l7iiAg33HFhEAG335ropp0toxnHs/edit?usp=sharing}{Stablecoins} --- о дивный новый мир \textit{стабильности}}
+\footnotetext[7]{Чуть подробнее здесь: \href{https://docs.google.com/presentation/d/1X1zsJ3o4tnskKV3l7iiAg33HFhEAG335ropp0toxnHs/edit?usp=sharing}{Stablecoins} --- о дивный новый мир \textit{стабильности}}
 \end{frame}
 
 \subsection{Кошелёк и подпись транзакций}
 \begin{frame}{Кошелёк --- точка входа в DeFi}
-  \begin{columns}[T, onlytextwidth]
-    \begin{column}{0.72\textwidth}
+  \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.76\textwidth}
       \centering
       \includegraphics[width=\linewidth]{wallet-flow.png}
     \end{column}
-    \begin{column}{0.24\textwidth}
+    \begin{column}{0.22\textwidth}
       \centering
       \begin{tikzpicture}
         \node[draw=accent, thick, dash pattern=on 4pt off 3pt, inner sep=4pt] {\includegraphics[width=0.9\linewidth]{qr.png}};
@@ -174,18 +178,18 @@
     \end{column}
   \end{columns}
   \vspace{1mm}
-  \footnotesize
   \begin{block}{}
+    \small
     \begin{itemize}
       \item Приватный ключ --- большое \textbf{случайное число}, единственное доказательство владения аккаунтом;
       \item Адрес --- производная от него, её можно свободно показывать.
       \item Подпись --- доказательство того, что именно вы отправили эту транзакция без раскрытия приватного ключа.
     \end{itemize}
-\end{block}{}
+  \end{block}
 \end{frame}
 
-\subsection{Основные примитивы (money legos)}
-\begin{frame}{Основные примитивы (money legos)}
+\subsection{Основные примитивы}
+\begin{frame}{Основные примитивы}
   \small
   \renewcommand{\arraystretch}{1.32}
   \vfill
@@ -230,11 +234,12 @@
       \end{figure}
     \end{column}
   \end{columns}
+  \footnotetext[8]{Uniswap V3 Development \href{https://uniswapv3book.com/milestone_0/constant-function-market-maker.html}{Book}}
 \end{frame}
 
 \begin{frame}{DEX и AMM: как происходит своп (обмен токенами)}
   \begin{block}{Как AMM определяет цену}
-    \footnotesize
+    \small
     \setlength{\itemsep}{0pt}
     \setlength{\topsep}{0pt}
     \setlength{\parskip}{0pt}
@@ -270,6 +275,7 @@
     \caption{TVL и объём активных займов в lending-протоколах}
     \label{fig:tvl-loans}
   \end{figure}
+  \footnotetext[9]{Defilama Lending \href{https://defillama.com/protocols/lending}{Protocols}}
 \end{frame}
 
 \subsection{Инфраструктура: оракулы, мосты, L1/L2}
@@ -316,89 +322,31 @@
 \section{Риски и что дальше}
 % ======================================================================
 
-\subsection{Карта рисков}
-\begin{frame}{Карта рисков DeFi}
+\subsection{Матрица рисков}
+\begin{frame}{Матрица рисков DeFi}
   \centering
   \begin{figure}
     \centering
-    \includegraphics[width=0.56\linewidth]{defi_risk_matrix_only.png}
+    \includegraphics[width=0.63\linewidth]{defi_risk_matrix_only.png}
     \caption{Вероятность реализации риска (12 мес) и тяжесть последствий}
     \label{fig:risk-matrix}
   \end{figure}
 \end{frame}
 
-\begin{frame}{Карта рисков DeFi: ключевые риски}
-  \footnotesize
-  \begin{columns}[T, onlytextwidth]
-    \begin{column}{0.5\textwidth}
-      \begin{block}{Приоритет --- действовать}
-        \begin{enumerate}
-          \setlength{\itemsep}{0pt}
-          \item Смарт-контракты: баги, эксплойты
-          \item Манипуляция оракулами
-          \item Каскады ликвидаций (плечо)
-          \item Регуляторные шоки
-          \item Рестейкинг / re-hypothecation
-        \end{enumerate}
-      \end{block}
-      \vspace{2mm}
-      \begin{block}{Контроль / автоматизация}
-        \begin{enumerate}
-          \setlength{\itemsep}{0pt}
-          \setcounter{enumi}{10}
-          \item MEV и сэндвич-атаки
-          \item RWA: юридические и кастодиальные пробелы
-        \end{enumerate}
-      \end{block}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{block}{План B --- ниже вероятность}
-        \begin{enumerate}
-          \setlength{\itemsep}{0pt}
-          \setcounter{enumi}{5}
-          \item Эксплойты кросс-чейн мостов
-          \item Компрометация admin-key / мультисига
-          \item Депег стейблкоинов
-          \item Каскад CeFi--DeFi
-          \item Квантовая угроза для ECDSA-подписей
-        \end{enumerate}
-      \end{block}
-      \vspace{2mm}
-      \begin{block}{Мониторинг}
-        \begin{enumerate}
-          \setlength{\itemsep}{0pt}
-          \setcounter{enumi}{12}
-          \item Недокапитализация страхового фонда
-          \item Governance-атака через флэш-займы
-          \item Централизация L2-секвенсера
-        \end{enumerate}
-      \end{block}
-    \end{column}
-  \end{columns}
+\begin{frame}{Матрица рисков DeFi: описание}
+  \centering
+  \includegraphics[width=0.98\linewidth]{risk_categories_diagram.png}
 \end{frame}
 
 \subsection{Регулирование в РФ}
-\begin{frame}{282-ФЗ}
-  По определению и по архитектуре на сам DeFi невозможно оказать влияние. Однако можно зарегулировать посредников и пути доступа к протоколам DeFi.
+\begin{frame}{«О цифровых валютах и цифровых правах» № 282-ФЗ}
+  По определению и по архитектуре на сам DeFi невозможно оказать влияние. Однако можно зарегулировать посредников и пути доступа к протоколам DeFi. На данный момент происходит следующее:
   \begin{itemize}
     \item Лицензируются биржи, обменники, депозитарии;
     \item Цифровая валюта признаётся имуществом;
-    \item Некастодиальные кошельки и cooling-off период в 48 часов при переводе более 100 000 руб.
-    \item Расчёты криптовалютой внутри России по-прежнему запрещены, но участникам ВЭД разрешены трансграничные расчёты и переводы криптовалюты за рубеж
+    \item Вводятся некастодиальные кошельки и cooling-off периоды в 48 часов при переводе более 100 000 руб.;
+    \item Участникам ВЭД разрешены трансграничные расчёты и переводы криптовалюты за рубеж.
   \end{itemize}
+  \footnotetext[10]{\href{https://www.consultant.ru/document/cons_doc_LAW_540983/}{Ссылка} на закон}
 \end{frame}
-
-% ------------------------------------------------------------- sources ---
-\begin{frame}{Источники}
-  \small
-  \begin{enumerate}
-    \item Uniswap v2 Core --- whitepaper
-    \item Aave Protocol --- документация
-    \item Chainlink Docs --- оракулы
-    \item DeFiLlama --- данные по TVL и протоколам
-    \item BIS --- обзоры о DeFi и системных рисках
-    \item EUR-Lex --- регламент MiCA (EU)
-  \end{enumerate}
-\end{frame}
-
 \end{document}

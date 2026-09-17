@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Карта рисков DeFi — категории</title>
+<style>
+  html,body{
+    margin:0; padding:0; background:#ffffff;
+    font-family:Arial,"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  .wrap{ width:1200px; margin:0 auto; padding:6px 6px 10px; box-sizing:border-box; }
+
+  .eyebrow{
+    display:flex; justify-content:flex-end; align-items:center;
+    margin:0 2px 12px; font-size:14px; color:#6b7280; font-style:italic;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap:20px 24px;
+  }
+
+  .card{
+    border-radius:16px;
+    padding:22px 24px 20px;
+    box-sizing:border-box;
+    box-shadow: 0 2px 8px rgba(20,30,50,0.07);
+    border:1.5px solid #E4E7EC;
+    border-top-width:6px;
+  }
+  .card ul{ list-style:none; margin:0; padding:0; }
+  .card li{
+    display:flex; align-items:flex-start; gap:12px;
+    margin:0 0 11px; font-size:17px; line-height:1.3; color:#20242b;
+  }
+  .card li:last-child{ margin-bottom:0; }
+  .badge{
+    flex:0 0 auto; width:25px; height:25px; margin-top:1px; border-radius:50%;
+    color:#fff; font-size:13px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .red    { background:#FDF4F3; border-top-color:#D03B3B; }
+  .red .badge { background:#D03B3B; }
+
+  .orange    { background:#FDF7F1; border-top-color:#E8875C; }
+  .orange .badge { background:#E8875C; }
+
+  .green    { background:#F3FAF1; border-top-color:#0CA30C; }
+  .green .badge { background:#0CA30C; }
+
+  .gold    { background:#FDF8ED; border-top-color:#C98500; }
+  .gold .badge { background:#C98500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Номера соответствуют карте рисков (пред. слайд)</div>
+  <div class="grid">
+
+    <div class="card orange">
+      <ul>
+        <li><span class="badge">6</span><span>Эксплойты кросс-чейн мостов</span></li>
+        <li><span class="badge">7</span><span>Компрометация admin-key / мультисига</span></li>
+        <li><span class="badge">8</span><span>Депег стейблкоинов</span></li>
+        <li><span class="badge">9</span><span>Каскад CeFi&ndash;DeFi</span></li>
+        <li><span class="badge">10</span><span>Квантовая угроза для ECDSA-подписей</span></li>
+      </ul>
+    </div>
+
+    <div class="card red">
+      <ul>
+        <li><span class="badge">1</span><span>Смарт-контракты: баги, эксплойты</span></li>
+        <li><span class="badge">2</span><span>Манипуляция оракулами</span></li>
+        <li><span class="badge">3</span><span>Каскады ликвидаций (плечо)</span></li>
+        <li><span class="badge">4</span><span>Регуляторные шоки</span></li>
+        <li><span class="badge">5</span><span>Рестейкинг / re-hypothecation</span></li>
+      </ul>
+    </div>
+
+    <div class="card green">
+      <ul>
+        <li><span class="badge">13</span><span>Недокапитализация страхового фонда</span></li>
+        <li><span class="badge">14</span><span>Governance-атака через флэш-займы</span></li>
+        <li><span class="badge">15</span><span>Централизация L2-секвенсера</span></li>
+      </ul>
+    </div>
+
+    <div class="card gold">
+      <ul>
+        <li><span class="badge">11</span><span>MEV и сэндвич-атаки</span></li>
+        <li><span class="badge">12</span><span>RWA: юридические и кастодиальные пробелы</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
